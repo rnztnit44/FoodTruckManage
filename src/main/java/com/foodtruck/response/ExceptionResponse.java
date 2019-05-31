@@ -1,0 +1,27 @@
+package com.foodtruck.response;
+
+import lombok.Data;
+
+@Data
+public class ExceptionResponse {
+
+    private String message;
+    private long timestamp;
+    private int status;
+
+    public ExceptionResponse() {
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public ExceptionResponse(int status) {
+        this.timestamp = System.currentTimeMillis();
+        this.status = status;
+    }
+
+    public ExceptionResponse(int status, String message) {
+        this.timestamp = System.currentTimeMillis();
+        this.status = status;
+        this.message = message;
+    }
+
+}
