@@ -1,6 +1,7 @@
 package com.foodtruck.service.impl;
 
 import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.exception.FoodTruckException;
 import com.foodtruck.repository.FoodTruckPermitRepository;
 import com.foodtruck.service.FoodService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,20 +19,29 @@ public class FoodServiceImpl implements FoodService {
     private FoodTruckPermitRepository foodTruckPermitRepository;
 
     @Override
-    public List<FoodTruckPermit> searchByOwnerName(String ownerName) {
+    public List<FoodTruckPermit> searchByOwnerName(String ownerName) throws FoodTruckException{
         List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByOwnerName(ownerName);
+        if(foodTruckList.size() == 0 ) {
+            throw new FoodTruckException("There is no FoodTruck for provided ownername");
+        }
         return foodTruckList;
     }
 
     @Override
-    public List<FoodTruckPermit> searchByExpiryDate(Date expiryTime) {
-        List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByExpirationDate(expiryTime);
+    public List<FoodTruckPermit> searchByExpiryDate(Date expiryDate) throws FoodTruckException{
+        List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByExpirationDate(expiryDate);
+        if(foodTruckList.size() == 0 ) {
+            throw new FoodTruckException("There is no FoodTruck whose permits have expired for provided expiryDate");
+        }
         return foodTruckList;
     }
 
     @Override
-    public List<FoodTruckPermit> searchByStreetName(String streetName) {
+    public List<FoodTruckPermit> searchByStreetName(String streetName) throws FoodTruckException {
         List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByStreetName(streetName);
+        if(foodTruckList.size() == 0 ) {
+            throw new FoodTruckException("There is no FoodTruck for provided streetName");
+        }
         return foodTruckList;
     }
 
