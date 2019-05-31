@@ -18,6 +18,10 @@ public class ExceptionResponse {
         this.status = status;
     }
 
+    public ExceptionResponse(String message) {
+        this.timestamp = System.currentTimeMillis();
+        this.message = message;
+    }
     public ExceptionResponse(int status, String message) {
         this.timestamp = System.currentTimeMillis();
         this.status = status;
