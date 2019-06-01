@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Table(name = "food_truck_location")
 @Data
 public class FoodTruckLocation {
-
     @Column(name = "location_id")
     private long locationId;
     @Column(name = "cnn")
