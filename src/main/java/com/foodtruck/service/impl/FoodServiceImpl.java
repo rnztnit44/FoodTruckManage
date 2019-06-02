@@ -55,7 +55,7 @@ public class FoodServiceImpl implements FoodService {
                     .permitNumber(foodTruck.getPermitNumber()).facilityTypeId(foodTruck.getFacilityTypeId())
                     .foodItems(foodTruck.getFoodItems()).priorPermit(foodTruck.getPriorPermit())
                     .expirationDate(foodTruck.getExpirationDate()).build();
-        foodTruckPermitRepository.save(foodTruckPermit);
+            foodTruckPermitRepository.save(foodTruckPermit);
         }catch(Exception e) {
             log.error(ExceptionConstant.UNABLE_ADD_TRUCK + " {}", e.getMessage());
             throw new FoodTruckException(ExceptionConstant.UNABLE_ADD_TRUCK);
