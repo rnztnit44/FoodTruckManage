@@ -23,7 +23,7 @@ public class ExceptionHandlingControllerAdvice {
     }
 
     @ExceptionHandler(FoodTruckException.class)
-    public ResponseEntity<ExceptionResponse> FoodTruckException(FoodTruckException ex) {
+    public ResponseEntity<ExceptionResponse> handleFoodTruckException(FoodTruckException ex) {
         log.error("handleUnnatiLoanProcessException Exception :{}", ex);
         ExceptionResponse exceptionResponse = new ExceptionResponse(ex.getMessage());
         exceptionResponse.setStatus(HttpStatus.BAD_REQUEST.value());

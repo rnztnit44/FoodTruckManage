@@ -2,10 +2,7 @@ package com.foodtruck.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "food_truck_owner")
@@ -14,6 +11,7 @@ public class FoodTruckOwner {
 
     @Id
     @Column(name = "applicant_id")
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
     private int applicantId;
 
     @Column(name = "applicant_name",length = 50)

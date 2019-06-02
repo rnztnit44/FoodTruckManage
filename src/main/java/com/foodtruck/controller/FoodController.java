@@ -31,7 +31,7 @@ public class FoodController {
     private GoogleLocationService googleLocationService;
 
     @GetMapping("searchByOwner/{ownerName}")
-    public ResponseEntity<List<FoodTruckPermit>> searchByOwnerName(@PathVariable("name")@NotNull String ownerName) throws FoodTruckException {
+    public ResponseEntity<List<FoodTruckPermit>> searchByOwnerName(@PathVariable("ownerName")@NotNull String ownerName) throws FoodTruckException {
         log.info("searchByOwnerName Api request params :{}", ownerName);
         return ResponseEntity.status(HttpStatus.OK).body(foodService.searchByOwnerName(ownerName));
     }

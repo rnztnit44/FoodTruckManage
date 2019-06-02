@@ -24,7 +24,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<FoodTruckPermit> searchByOwnerName(String ownerName) throws FoodTruckException{
         List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByOwnerName(ownerName);
-        if(foodTruckList.size() == 0 ) {
+        if(foodTruckList.isEmpty()) {
             throw new FoodTruckException(ExceptionConstant.NO_TRUCK_FOR_OWNER);
         }
         return foodTruckList;
@@ -33,7 +33,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<FoodTruckPermit> searchByExpiryDate(Date expiryDate) throws FoodTruckException{
         List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByExpirationDate(expiryDate);
-        if(foodTruckList.size() == 0 ) {
+        if(foodTruckList.isEmpty()) {
             throw new FoodTruckException(ExceptionConstant.NO_TRUCK_FOR_EXPIRY_DATE);
         }
         return foodTruckList;
@@ -42,7 +42,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<FoodTruckPermit> searchByStreetName(String streetName) throws FoodTruckException {
         List<FoodTruckPermit> foodTruckList = foodTruckPermitRepository.findByStreetName(streetName);
-        if(foodTruckList.size() == 0 ) {
+        if(foodTruckList.isEmpty()) {
             throw new FoodTruckException(ExceptionConstant.NO_TRUCK_FOR_STREET);
         }
         return foodTruckList;
