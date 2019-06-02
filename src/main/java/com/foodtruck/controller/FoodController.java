@@ -2,9 +2,11 @@ package com.foodtruck.controller;
 
 import com.foodtruck.bean.FoodTruck;
 import com.foodtruck.bean.FoodTruckAddress;
+import com.foodtruck.constant.ApiConstant;
 import com.foodtruck.entity.FoodTruckPermit;
 import com.foodtruck.exception.FoodTruckException;
 import com.foodtruck.exception.LocationServiceException;
+import com.foodtruck.response.FoodApiResponse;
 import com.foodtruck.service.FoodService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.foodtruck.service.GoogleLocationService;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -28,33 +31,35 @@ public class FoodController {
     private GoogleLocationService googleLocationService;
 
     @GetMapping("searchByOwner/{ownerName}")
-    public ResponseEntity<List<FoodTruckPermit>> searchByOwnerName(@PathVariable("name") String ownerName) throws FoodTruckException {
+    public ResponseEntity<List<FoodTruckPermit>> searchByOwnerName(@PathVariable("name")@NotNull String ownerName) throws FoodTruckException {
         log.info("searchByOwnerName Api request params :{}", ownerName);
         return ResponseEntity.status(HttpStatus.OK).body(foodService.searchByOwnerName(ownerName));
     }
 
     @GetMapping("searchByExpiryDate/{expiryDate}")
-    public ResponseEntity<List<FoodTruckPermit>> searchByExpiryDate(@PathVariable("expiryDate") Date expiryDate) throws FoodTruckException {
+    public ResponseEntity<List<FoodTruckPermit>> searchByExpiryDate(@PathVariable("expiryDate")@NotNull Date expiryDate) throws FoodTruckException {
         log.info("searchByExpiryDate Api request params :{}", expiryDate);
         return ResponseEntity.status(HttpStatus.OK).body(foodService.searchByExpiryDate(expiryDate));
     }
 
     @GetMapping("searchByStreet")
-    public ResponseEntity<List<FoodTruckPermit>> searchByStreetName(@RequestParam String streetName) throws FoodTruckException {
+    public ResponseEntity<List<FoodTruckPermit>> searchByStreetName(@RequestParam @NotNull String streetName) throws FoodTruckException {
         log.info("searchByStreetName Api request params :{}", streetName);
         return ResponseEntity.status(HttpStatus.OK).body(foodService.searchByStreetName(streetName));
     }
 
     @PostMapping("addTruck")
-    public ResponseEntity<String> addTruck(@RequestBody FoodTruck foodTruck) throws FoodTruckException {
+    public ResponseEntity<FoodApiResponse> addTruck(@RequestBody @NotNull FoodTruck foodTruck) throws FoodTruckException {
         log.info("addTruck Api request params :{}", foodTruck);
-        return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodTruck(foodTruck));
+        String addSuccess = foodService.addFoodTruck(foodTruck);
+        return ResponseEntity.ok().body(new FoodApiResponse(ApiConstant.SUCCESS_CODE,addSuccess));
     }
 
     @DeleteMapping("deleteTruck/{foodTruckId}")
-    public ResponseEntity<String> deleteTruck(@PathVariable Long foodTruckId) throws FoodTruckException {
+    public ResponseEntity<FoodApiResponse> deleteTruck(@PathVariable @NotNull Long foodTruckId) throws FoodTruckException {
         log.info("deleteTruck Api request params :{}", foodTruckId);
-        return ResponseEntity.status(HttpStatus.OK).body(foodService.deleteFoodTruck(foodTruckId));
+        String deleteSuccess = foodService.deleteFoodTruck(foodTruckId);
+        return ResponseEntity.ok().body(new FoodApiResponse(ApiConstant.SUCCESS_CODE,deleteSuccess));
     }
 
     @DeleteMapping("nearestTruck")
