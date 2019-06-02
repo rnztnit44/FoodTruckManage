@@ -1,5 +1,6 @@
 package com.foodtruck.service.impl;
 
+import com.foodtruck.bean.FoodTruck;
 import com.foodtruck.domainobjects.FoodTruckPermit;
 import com.foodtruck.exception.FoodTruckException;
 import com.foodtruck.repository.FoodTruckPermitRepository;

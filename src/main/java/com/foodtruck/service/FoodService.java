@@ -1,5 +1,6 @@
 package com.foodtruck.service;
 
+import com.foodtruck.bean.FoodTruck;
 import com.foodtruck.domainobjects.FoodTruckPermit;
 import com.foodtruck.exception.FoodTruckException;
 import org.springframework.stereotype.Service;
