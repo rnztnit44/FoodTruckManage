@@ -1,7 +1,7 @@
 package com.foodtruck.service.impl;
 
 import com.foodtruck.constant.FoodConstant;
-import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.entity.FoodTruckPermit;
 import com.foodtruck.repository.FoodTruckPermitRepository;
 import com.foodtruck.service.FoodSchedulerSevice;
 import lombok.extern.slf4j.Slf4j;

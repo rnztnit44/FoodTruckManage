@@ -1,6 +1,6 @@
 package com.foodtruck.repository;
 
-import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.entity.FoodTruckPermit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

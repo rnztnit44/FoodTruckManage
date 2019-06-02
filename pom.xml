@@ -19,7 +19,6 @@
 		<google.maps.service.version>0.9.3</google.maps.service.version>
 		<mysql.connector.java>5.1.46</mysql.connector.java>
 		<hibernate.jpa.api.version>1.0.2.Final</hibernate.jpa.api.version>
-
 	</properties>
 
 	<dependencies>

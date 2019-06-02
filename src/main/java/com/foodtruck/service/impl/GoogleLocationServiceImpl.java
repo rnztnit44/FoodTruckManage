@@ -1,7 +1,7 @@
 package com.foodtruck.service.impl;
 
 import com.foodtruck.bean.FoodTruckAddress;
-import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.entity.FoodTruckPermit;
 import com.foodtruck.exception.LocationServiceException;
 import com.foodtruck.repository.FoodTruckLocationRepository;
 import com.foodtruck.repository.FoodTruckPermitRepository;

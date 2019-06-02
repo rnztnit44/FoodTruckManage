@@ -1,6 +1,6 @@
 package com.foodtruck.repository;
 
-import com.foodtruck.domainobjects.FoodTruckLocation;
+import com.foodtruck.entity.FoodTruckLocation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

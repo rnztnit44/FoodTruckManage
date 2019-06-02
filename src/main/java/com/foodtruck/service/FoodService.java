@@ -1,7 +1,7 @@
 package com.foodtruck.service;
 
 import com.foodtruck.bean.FoodTruck;
-import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.entity.FoodTruckPermit;
 import com.foodtruck.exception.FoodTruckException;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,8 @@ public interface FoodService {
 
     List<FoodTruckPermit> searchByStreetName(String streetName) throws FoodTruckException;
 
-    String addFoodTruck(FoodTruckPermit foodTruck);
+    String addFoodTruck(FoodTruck foodTruck) throws FoodTruckException;
 
-    String deleteFoodTruck(Long foodTruckId);
+    String deleteFoodTruck(Long foodTruckId) throws FoodTruckException;
 
 }

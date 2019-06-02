@@ -1,7 +1,10 @@
 package com.foodtruck.bean;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class FoodTruck {
     private int applicantId;
     private long locationId;

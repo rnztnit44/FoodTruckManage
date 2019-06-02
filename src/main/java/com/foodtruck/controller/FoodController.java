@@ -2,7 +2,7 @@ package com.foodtruck.controller;
 
 import com.foodtruck.bean.FoodTruck;
 import com.foodtruck.bean.FoodTruckAddress;
-import com.foodtruck.domainobjects.FoodTruckPermit;
+import com.foodtruck.entity.FoodTruckPermit;
 import com.foodtruck.exception.FoodTruckException;
 import com.foodtruck.exception.LocationServiceException;
 import com.foodtruck.service.FoodService;
@@ -46,19 +46,20 @@ public class FoodController {
     }
 
     @PostMapping("addTruck")
-    public ResponseEntity<String> addTruck(@RequestBody FoodTruckPermit foodTruck) {
+    public ResponseEntity<String> addTruck(@RequestBody FoodTruck foodTruck) throws FoodTruckException {
         log.info("addTruck Api request params :{}", foodTruck);
         return ResponseEntity.status(HttpStatus.CREATED).body(foodService.addFoodTruck(foodTruck));
     }
 
     @DeleteMapping("deleteTruck/{foodTruckId}")
-    public ResponseEntity<String> deleteTruck(@PathVariable Long foodTruckId) {
+    public ResponseEntity<String> deleteTruck(@PathVariable Long foodTruckId) throws FoodTruckException {
         log.info("deleteTruck Api request params :{}", foodTruckId);
         return ResponseEntity.status(HttpStatus.OK).body(foodService.deleteFoodTruck(foodTruckId));
     }
 
     @DeleteMapping("nearestTruck")
-    public ResponseEntity<FoodTruckPermit> getNearestTruck(@RequestParam(value = "destinationList") List<FoodTruckAddress> destinationList) throws LocationServiceException, InterruptedException {
+    public ResponseEntity<FoodTruckPermit> getNearestTruck(@RequestParam(value = "destinationList") List<FoodTruckAddress> destinationList)
+            throws LocationServiceException, InterruptedException {
         log.info("getNearestTruck Api request params :{}", destinationList);
         return ResponseEntity.status(HttpStatus.OK).body(googleLocationService.getNearestFoodTruck(destinationList));
     }

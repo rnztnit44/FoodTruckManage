@@ -1,4 +1,4 @@
-package com.foodtruck.domainobjects;
+package com.foodtruck.entity;
 
 import lombok.Data;
 
